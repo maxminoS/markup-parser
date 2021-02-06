@@ -1,4 +1,3 @@
-import React from 'react';
 import { parseMarkdown, parseOrg } from "utils/Parsers";
 
 type Props = {
@@ -7,7 +6,7 @@ type Props = {
 }
 
 export const Preview = (props: Props) => {
-  return(
+  return (
       <div style={{
             border: "1px solid black",
             display: "inline-block",
