@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import renderer from "react-test-renderer";
 
 import { MarkupParser } from "components/MarkupParser";
 
@@ -29,4 +30,9 @@ describe('Previews', () => {
     userEvent.type(screen.getByRole("textbox"), "* Preview this text");
     expect(screen.getByRole("heading", { name: /preview this text/i })).toBeInTheDocument();
   });
+});
+
+it('renders MarkupParser component as expected', () => {
+  const markupParser = renderer.create(<MarkupParser />).toJSON();
+  expect(markupParser).toMatchSnapshot();
 });

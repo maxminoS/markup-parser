@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from "@testing-library/react";
+import renderer from "react-test-renderer";
 
 import { Selector } from "components/Selector";
 
@@ -18,4 +19,9 @@ describe("Selector", () => {
     render(<Selector parseTo={"Org Mode"} setParseTo={() => {}} />);
     expect(screen.getByRole("button", { name: /org mode/i })).toBeInTheDocument();
   });
+});
+
+it('renders Selector component as expected', () => {
+  const selector = renderer.create(<Selector parseTo={"HTML"} setParseTo={() => {}} />).toJSON();
+  expect(selector).toMatchSnapshot();
 });

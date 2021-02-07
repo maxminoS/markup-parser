@@ -1,5 +1,4 @@
 import React from 'react';
-import { TextareaAutosize } from '@material-ui/core';
 
 type Props = {
   content: string,
@@ -10,7 +9,7 @@ export const TextInput = (props: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => props.setContent(e.target.value);
 
   return(
-    <TextareaAutosize
+    <textarea
           onChange={handleChange}
           style={{
               width: "98%",
