@@ -6,22 +6,16 @@ import { Selector } from "components/Selector";
 describe("Selector", () => {
   it("has HTML option", () => {
     render(<Selector parseTo={"HTML"} setParseTo={() => {}} />);
-    expect((screen.getByText("HTML") as HTMLOptionElement).selected).toBe(true);
-    expect((screen.getByText("Markdown") as HTMLOptionElement).selected).toBe(false);
-    expect((screen.getByText("Org Mode") as HTMLOptionElement).selected).toBe(false);
+    expect(screen.getByRole("button", { name: /html/i })).toBeInTheDocument();
   });
 
   it("has Markdown option", () => {
     render(<Selector parseTo={"Markdown"} setParseTo={() => {}} />);
-    expect((screen.getByText("HTML") as HTMLOptionElement).selected).toBe(false);
-    expect((screen.getByText("Markdown") as HTMLOptionElement).selected).toBe(true);
-    expect((screen.getByText("Org Mode") as HTMLOptionElement).selected).toBe(false);
+    expect(screen.getByRole("button", { name: /markdown/i })).toBeInTheDocument();
   });
 
   it('has Org Mode option', () => {
     render(<Selector parseTo={"Org Mode"} setParseTo={() => {}} />);
-    expect((screen.getByText("HTML") as HTMLOptionElement).selected).toBe(false);
-    expect((screen.getByText("Markdown") as HTMLOptionElement).selected).toBe(false);
-    expect((screen.getByText("Org Mode") as HTMLOptionElement).selected).toBe(true);
+    expect(screen.getByRole("button", { name: /org mode/i })).toBeInTheDocument();
   });
 });

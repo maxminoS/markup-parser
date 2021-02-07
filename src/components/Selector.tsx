@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
 type Props = {
   parseTo: string,
@@ -6,13 +7,20 @@ type Props = {
 }
 
 export const Selector = (props: Props) => {
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => props.setParseTo(e.target.value);
+  const handleSelectChange = (e: React.ChangeEvent<{ value: unknown }>) => props.setParseTo(e.target.value as string);
 
-  return(
-    <select value={props.parseTo} onChange={handleSelectChange}>
-      <option value="HTML">HTML</option>
-      <option value="Markdown">Markdown</option>
-      <option value="Org Mode">Org Mode</option>
-    </select>
+  return (
+    <FormControl variant="outlined">
+      <InputLabel>Markup</InputLabel>
+      <Select
+        value={props.parseTo}
+        onChange={handleSelectChange}
+        label="Markup"
+      >
+        <MenuItem value="HTML">HTML</MenuItem>
+        <MenuItem value="Markdown">Markdown</MenuItem>
+        <MenuItem value="Org Mode">Org Mode</MenuItem>
+      </Select>
+    </FormControl>
   );
 }

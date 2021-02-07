@@ -10,8 +10,8 @@ export const Preview = (props: Props) => {
       <div style={{
             border: "1px solid black",
             display: "inline-block",
-            width: "90%",
-            height: "40vh",
+            width: "96%",
+            height: "85vh",
             overflowY: "auto"
           }}
            dangerouslySetInnerHTML={{
